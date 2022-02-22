@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1077991086939",
+    "project_id": "comrades-75024",
+    "storage_bucket": "comrades-75024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077991086939:android:32cd867c1d23a82722187e",
+        "android_client_info": {
+          "package_name": "com.example.guessit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077991086939-4jssuirc3842i66nkpb35o5m3i00vr61.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgDgzJJwVQEx44FSPfhMB5Zq_X-Mz5YG4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077991086939-4jssuirc3842i66nkpb35o5m3i00vr61.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
