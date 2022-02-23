@@ -7,6 +7,78 @@
     android:background="#CCC0C0"
     tools:context=".MainActivity">
 
+    <View
+        android:id="@+id/tabBack_M"
+        android:layout_width="wrap_content"
+        android:layout_height="63dp"
+        android:background="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/tabMain_M"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginEnd="269dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@id/tabLB_Main"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tabBack_M"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Main"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tabMain_M"
+        app:layout_constraintEnd_toEndOf="@+id/tabMain_M"
+        app:layout_constraintStart_toStartOf="@+id/tabMain_M"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/tabGame_M"
+        android:layout_width="0dp"
+        android:layout_height="63dp"
+        android:layout_marginEnd="135dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@id/tabLB_Main"
+        app:layout_constraintStart_toEndOf="@+id/tabMain_M"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Game"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/tabGame_M"
+        app:layout_constraintEnd_toEndOf="@+id/tabGame_M"
+        app:layout_constraintStart_toEndOf="@id/tabMain_M"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/tabLB_Main"
+        android:layout_width="0dp"
+        android:layout_height="63dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tabGame_M"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Leaderboard"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tabLB_Main"
+        app:layout_constraintEnd_toEndOf="@+id/tabBack_M"
+        app:layout_constraintStart_toEndOf="@+id/tabGame_M"
+        app:layout_constraintTop_toTopOf="@+id/tabLB_Main" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="337dp"
@@ -16,58 +88,66 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tabBack_M"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/ic_launcher_foreground" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
+        android:id="@+id/buttonStart"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/round_button"
+        android:layout_width="90dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/ic_media_play"
         android:color="@color/colorPrimary"
-        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.155"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button2"
+        android:id="@+id/buttonLB"
         style="@style/Widget.AppCompat.Button"
+        android:layout_width="90dp"
+        android:layout_height="92dp"
+        android:background="@android:drawable/btn_star_big_on"
+        android:color="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonStart"
+        app:layout_constraintVertical_bias="0.19" />
+
+    <TextView
+        android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:background="@drawable/round_button"
-        android:color="@color/colorPrimary"
-        android:text="Button"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="228dp"
+        android:fontFamily="@font/archivo_black"
+        android:text="Leaderboard"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.254" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.403"
+        app:layout_constraintStart_toEndOf="@+id/buttonLB"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Main" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Game" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Leaderboard" />
-    </com.google.android.material.tabs.TabLayout>
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="109dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="80dp"
+        android:fontFamily="@font/archivo_black"
+        android:text="Start"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintStart_toEndOf="@+id/buttonStart"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.58000004" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
