@@ -128,7 +128,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline11" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/firstPlace_Points"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -341,7 +341,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/firstPlace_Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
