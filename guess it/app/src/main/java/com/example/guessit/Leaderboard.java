@@ -21,15 +21,16 @@ public class Leaderboard extends AppCompatActivity {
     DatabaseReference databaseReference;
 
 
-    TextView first_placeName = (TextView) findViewById(R.id.firstPlace_Name);
-    TextView first_placePoints = (TextView)findViewById(R.id.firstPlace_Points);
+    TextView first_placeName;
+    TextView first_placePoints;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
-
+        first_placeName = (TextView) findViewById(R.id.firstPlace_Name);
+        first_placePoints = (TextView)findViewById(R.id.firstPlace_Points);
 
         getData();
     }
