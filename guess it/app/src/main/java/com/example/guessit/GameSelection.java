@@ -2,7 +2,6 @@ package com.example.guessit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,18 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
-
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.lang.reflect.Array;
 
 public class GameSelection extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -30,7 +19,7 @@ public class GameSelection extends AppCompatActivity implements AdapterView.OnIt
     EditText p1, p2;
     Button start;
     String user_difficulty = "";
-    String user_choise = "";
+    String user_choice = "";
 
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref = database.getReference();
@@ -68,10 +57,10 @@ public class GameSelection extends AppCompatActivity implements AdapterView.OnIt
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         user_difficulty = (String) difficulty.getItemAtPosition(i);
-        user_choise = (String)choise.getItemAtPosition(i);
+        user_choice = (String)choise.getItemAtPosition(i);
 
         System.out.println("Difficulty is: " + user_difficulty);
-        System.out.println("Player that starts first is: " + user_choise);
+        System.out.println("Player that starts first is: " + user_choice);
     }
 
     @Override
@@ -83,13 +72,12 @@ public class GameSelection extends AppCompatActivity implements AdapterView.OnIt
         String name_1 = p1.getText().toString();
         String name_2 = p2.getText().toString();
 
-        System.out.println("Name1: " + name_1);
-        System.out.println("Name2: " + name_2);
+
 
         ref.child("usernames/user1").setValue(name_1);
         ref.child("usernames/user2").setValue(name_2);
         ref.child("settings/difficulty").setValue(user_difficulty);
-        ref.child("settings/selection").setValue(user_choise);
+        ref.child("settings/selection").setValue(user_choice);
 
     }
 
