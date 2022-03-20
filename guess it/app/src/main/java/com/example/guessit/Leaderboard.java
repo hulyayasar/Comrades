@@ -17,13 +17,10 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class Leaderboard extends AppCompatActivity {
-    FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-
 
     TextView first_placeName;
     TextView first_placePoints;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
