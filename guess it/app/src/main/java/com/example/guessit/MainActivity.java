@@ -30,4 +30,5 @@ public class MainActivity extends AppCompatActivity {
         Intent gameIntent = new Intent(getApplicationContext(), GameSelection.class);
         startActivity(gameIntent);
     }
+
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#7E5B5B"
-    tools:context=".MainActivity">
+    tools:context=".Leaderboard">
 
     <View
         android:id="@+id/tabBack_LB"
@@ -108,7 +108,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/p7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -118,7 +118,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline10" />
 
     <TextView
-        android:id="@+id/textView26"
+        android:id="@+id/p8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -128,7 +128,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline11" />
 
     <TextView
-        android:id="@+id/firstPlace_Points"
+        android:id="@+id/p1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -138,7 +138,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/p2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -148,7 +148,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/p3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -158,7 +158,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/p4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -168,7 +168,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/p5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -178,7 +178,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
     <TextView
-        android:id="@+id/textView24"
+        android:id="@+id/p6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -341,7 +341,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/firstPlace_Name"
+        android:id="@+id/n1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -351,7 +351,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/n2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -361,7 +361,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/n3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -371,7 +371,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/n4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -381,7 +381,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/n5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -391,7 +391,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/n6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -401,7 +401,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/n7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -411,7 +411,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline10" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/n8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"

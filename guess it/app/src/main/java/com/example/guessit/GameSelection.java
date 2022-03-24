@@ -28,7 +28,6 @@ public class GameSelection extends AppCompatActivity implements AdapterView.OnIt
     String user_choise = "";
     String name_1;
     String name_2;
-    
 
 
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -70,9 +69,6 @@ public class GameSelection extends AppCompatActivity implements AdapterView.OnIt
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         user_difficulty = (String) difficulty.getItemAtPosition(i);
         user_choice = (String)choise.getItemAtPosition(i);
-
-        System.out.println("Difficulty is: " + user_difficulty);
-        System.out.println("Player that starts first is: " + user_choice);
     }
 
     @Override
@@ -86,6 +82,13 @@ public class GameSelection extends AppCompatActivity implements AdapterView.OnIt
 
         String key = ref.push().getKey();
         ref.child(key).child("username").setValue(name_1);
+
+        refLb.child(key).child(name_1).setValue(0);
+
+        String key1 = ref.push().getKey();
+        ref.child(key1).child("username").setValue(name_2);
+        refLb.child(name_2).setValue(0);
+
         refLb.child(key).child("username").setValue(name_1);
         refLb.child(key).child("points").setValue(0);
 
@@ -105,14 +108,19 @@ public class GameSelection extends AppCompatActivity implements AdapterView.OnIt
         gameStart.putExtra("player1ID", key);
         gameStart.putExtra("player2ID", key1);
 
+        refSettings.child("difficulty").setValue(user_difficulty);
+        refSettings.child("selection").setValue(user_choise);
+
+        Intent gameStart = new Intent(getApplicationContext(), Game.class);
 
 
-        ref.child("usernames/user1").setValue(name_1);
-        ref.child("usernames/user2").setValue(name_2);
-        ref.child("settings/difficulty").setValue(user_difficulty);
-        ref.child("settings/selection").setValue(user_choice);
+        gameStart.putExtra("name1", name_1);
+        gameStart.putExtra("name2", name_2);
+        gameStart.putExtra("player1ID", key);
+        gameStart.putExtra("player2ID", key1);
+
+        startActivity(gameStart);
 
     }
 
-    
 }
