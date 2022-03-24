@@ -69,15 +69,36 @@ public class GameSelection extends AppCompatActivity implements AdapterView.OnIt
     }
 
     public void start (View view){
+
         String name_1 = p1.getText().toString();
         String name_2 = p2.getText().toString();
 
+        name_1 = p1.getText().toString();
+        name_2 = p2.getText().toString();
+
+        String key = ref.push().getKey();
+        ref.child(key).child("username").setValue(name_1);
+        refLb.child(name_1).setValue(0);
 
 
-        ref.child("usernames/user1").setValue(name_1);
-        ref.child("usernames/user2").setValue(name_2);
-        ref.child("settings/difficulty").setValue(user_difficulty);
-        ref.child("settings/selection").setValue(user_choice);
+        String key1 = ref.push().getKey();
+        ref.child(key1).child("username").setValue(name_2);
+        refLb.child(name_2).setValue(0);
+
+
+        refSettings.child("difficulty").setValue(user_difficulty);
+        refSettings.child("selection").setValue(user_choise);
+
+        Intent gameStart = new Intent(getApplicationContext(), Game.class);
+
+
+        gameStart.putExtra("name1", name_1);
+        gameStart.putExtra("name2", name_2);
+        gameStart.putExtra("player1ID", key);
+        gameStart.putExtra("player2ID", key1);
+
+
+        startActivity(gameStart);
 
     }
 
