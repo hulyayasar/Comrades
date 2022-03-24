@@ -2,6 +2,7 @@ package com.example.guessit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,16 +14,27 @@ import android.widget.Spinner;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 public class GameSelection extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+
 
     Spinner difficulty, choise;
     EditText p1, p2;
     Button start;
     String user_difficulty = "";
+
     String user_choice = "";
 
+    String user_choise = "";
+    String name_1;
+    String name_2;
+
+
+
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference ref = database.getReference();
+    DatabaseReference ref = database.getReference("usernames");
+    DatabaseReference refSettings = database.getReference("settings");
+    DatabaseReference refLb = database.getReference("leaderboard");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,33 +70,24 @@ public class GameSelection extends AppCompatActivity implements AdapterView.OnIt
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         user_difficulty = (String) difficulty.getItemAtPosition(i);
         user_choice = (String)choise.getItemAtPosition(i);
-
-        System.out.println("Difficulty is: " + user_difficulty);
-        System.out.println("Player that starts first is: " + user_choice);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 
+
     public void start (View view){
-
-        String name_1 = p1.getText().toString();
-        String name_2 = p2.getText().toString();
-
         name_1 = p1.getText().toString();
         name_2 = p2.getText().toString();
 
         String key = ref.push().getKey();
         ref.child(key).child("username").setValue(name_1);
-        refLb.child(name_1).setValue(0);
-
+        refLb.child(key).child(name_1).setValue(0);
 
         String key1 = ref.push().getKey();
         ref.child(key1).child("username").setValue(name_2);
         refLb.child(name_2).setValue(0);
-
 
         refSettings.child("difficulty").setValue(user_difficulty);
         refSettings.child("selection").setValue(user_choise);
@@ -97,9 +100,9 @@ public class GameSelection extends AppCompatActivity implements AdapterView.OnIt
         gameStart.putExtra("player1ID", key);
         gameStart.putExtra("player2ID", key1);
 
-
         startActivity(gameStart);
 
     }
+
 
 }
