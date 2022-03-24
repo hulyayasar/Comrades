@@ -20,10 +20,16 @@ import java.util.ArrayList;
 
 public class Leaderboard extends AppCompatActivity {
 
+
     DatabaseReference databaseReference;
 
     TextView n1, n2, n3, n4, n5, n6, n7, n8, p1, p2, p3, p4, p5, p6, p7, p8;
     ArrayList<String> points = new ArrayList<String>();
+
+    DatabaseReference databaseReference;
+
+    TextView first_placeName;
+    TextView first_placePoints;
 
 
     @Override
