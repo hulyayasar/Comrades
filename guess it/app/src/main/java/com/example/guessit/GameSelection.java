@@ -1,7 +1,9 @@
 package com.example.guessit;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-public class GameSelection extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class GameSelection extends AppCompatActivity{
 
 
     Spinner difficulty, choise;
@@ -45,12 +47,12 @@ public class GameSelection extends AppCompatActivity implements AdapterView.OnIt
         start = (Button)findViewById(R.id.button_starter);
 
         difficulty = (Spinner)findViewById(R.id.difficulty_selection);
-        difficulty.setOnItemSelectedListener(this);
+        difficulty.setOnItemSelectedListener(new DifficultySpinner());
 
         choise = (Spinner)findViewById(R.id.p_selection);
-        choise.setOnItemSelectedListener(this);
+        choise.setOnItemSelectedListener(new PlayerSpinner());
 
-        String [] difficulties = getResources().getStringArray(R.array.deneme);
+        String [] difficulties = getResources().getStringArray(R.array.difficulty);
         String [] players = getResources().getStringArray(R.array.players);
 
 
@@ -62,44 +64,76 @@ public class GameSelection extends AppCompatActivity implements AdapterView.OnIt
         adapter_choise.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         choise.setAdapter(adapter_choise);
 
+        start.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(GameSelection.this);
+
+            builder.setTitle("RULES");
+            builder.setMessage("Rules are simple, the user that goes first inputs the number that that needs" +
+                    "to be guessed by the second user. There is a time limit of 40 seconds. " +
+                    "If you can't guessed it right before the time is over you get 0 points, " +
+                    "if you guess it right you will earn 2 points for each second left on the timer. " +
+                    "Good luck and have fun!");
+
+            builder.setPositiveButton("OK", (dialogInterface, i) -> {
+                name_1 = p1.getText().toString();
+                name_2 = p2.getText().toString();
+
+                String key = ref.push().getKey();
+                ref.child(key).child("username").setValue(name_1);
+                refLb.child(name_1).setValue(0);
+
+                String key1 = ref.push().getKey();
+                ref.child(key1).child("username").setValue(name_2);
+                refLb.child(name_2).setValue(0);
+
+                refSettings.child("difficulty").setValue(user_difficulty);
+                refSettings.child("selection").setValue(user_choise);
+
+                Intent gameStart = new Intent(getApplicationContext(), Game.class);
+
+                gameStart.putExtra("name1", name_1);
+                gameStart.putExtra("name2", name_2);
+                gameStart.putExtra("player1ID", key);
+                gameStart.putExtra("player2ID", key1);
+                startActivity(gameStart);
+            });
+            builder.show();
+        });
     }
 
+//    @Override
+//    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//        user_difficulty = (String) difficulty.getItemAtPosition(i);
+//        user_choise = (String)choise.getItemAtPosition(i);
+//    }
+//
+//    @Override
+//    public void onNothingSelected(AdapterView<?> adapterView) {
+//    }
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        user_difficulty = (String) difficulty.getItemAtPosition(i);
-        user_choice = (String)choise.getItemAtPosition(i);
+    class DifficultySpinner implements AdapterView.OnItemSelectedListener{
+
+        @Override
+        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            user_difficulty = (String) difficulty.getItemAtPosition(i);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> adapterView) {
+
+        }
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
+    class PlayerSpinner implements AdapterView.OnItemSelectedListener{
+
+        @Override
+        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            user_choise = (String) choise.getItemAtPosition(i);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> adapterView) {
+
+        }
     }
-
-
-    public void start (View view){
-        name_1 = p1.getText().toString();
-        name_2 = p2.getText().toString();
-
-        String key = ref.push().getKey();
-        ref.child(key).child("username").setValue(name_1);
-        refLb.child(name_1).setValue(0);
-
-        String key1 = ref.push().getKey();
-        ref.child(key1).child("username").setValue(name_2);
-        refLb.child(name_2).setValue(0);
-
-        refSettings.child("difficulty").setValue(user_difficulty);
-        refSettings.child("selection").setValue(user_choise);
-
-        Intent gameStart = new Intent(getApplicationContext(), Game.class);
-        
-        gameStart.putExtra("name1", name_1);
-        gameStart.putExtra("name2", name_2);
-        gameStart.putExtra("player1ID", key);
-        gameStart.putExtra("player2ID", key1);
-
-        startActivity(gameStart);
-
-    }
-
 }

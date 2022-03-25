@@ -26,6 +26,11 @@ public class Leaderboard extends AppCompatActivity {
     TextView n1, n2, n3, n4, n5, n6, n7, n8, p1, p2, p3, p4, p5, p6, p7, p8;
     ArrayList<String> points = new ArrayList<String>();
 
+    public void backtoHomeButton (View view){
+        Intent backHome = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(backHome);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

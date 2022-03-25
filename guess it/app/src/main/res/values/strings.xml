@@ -10,7 +10,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
 
-    <string-array name="deneme">
+    <string-array name="difficulty">
         <item>Easy</item>
         <item>Medium</item>
         <item>Hard</item>
