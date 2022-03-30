@@ -17,12 +17,12 @@
 
     <View
         android:id="@+id/tabMain_LB"
-        android:layout_width="0dp"
-        android:layout_height="63dp"
+        android:layout_width="198dp"
+        android:layout_height="62dp"
         android:layout_marginEnd="269dp"
-        android:layout_marginRight="269dp"
         android:background="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@id/tabLB_LB"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,77 +78,14 @@
         app:layout_constraintStart_toEndOf="@+id/tabGame_LB"
         app:layout_constraintTop_toTopOf="@+id/tabLB_LB" />
 
-    <TextView
-        android:id="@+id/counter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Counter"
-        android:textSize="16sp"
+    <FrameLayout
+        android:layout_width="664dp"
+        android:layout_height="313dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.894"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabBack_LB" />
+        app:layout_constraintTop_toBottomOf="@+id/tabBack_LB">
 
-    <TextView
-        android:id="@+id/difficulty_show"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Difficulty: "
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/counter"
-        app:layout_constraintHorizontal_bias="0.142"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabMain_LB" />
-
-    <EditText
-        android:id="@+id/number_guess"
-        android:layout_width="284dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="56dp"
-        android:ems="10"
-        android:hint="Enter the number to be guessed"
-        android:inputType="numberPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/difficulty_show" />
-
-    <TextView
-        android:id="@+id/hint_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="Hint"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/number_guess" />
-
-    <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:ems="10"
-        android:hint="Enter your guess"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hint_view" />
-
-    <Button
-        android:id="@+id/check_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
-        android:text="Check"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

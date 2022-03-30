@@ -23,11 +23,12 @@ public class GameSelection extends AppCompatActivity{
     Spinner difficulty, choise;
     EditText p1, p2;
     Button start;
-    String user_difficulty = "";
 
-    String user_choice = "";
+    String user_difficulty = "";
+    int difficulty_index;
 
     String user_choise = "";
+
     String name_1;
     String name_2;
 
@@ -67,54 +68,135 @@ public class GameSelection extends AppCompatActivity{
         start.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(GameSelection.this);
 
-            builder.setTitle("RULES");
-            builder.setMessage("Rules are simple, the user that goes first inputs the number that that needs" +
-                    "to be guessed by the second user. There is a time limit of 40 seconds. " +
-                    "If you can't guessed it right before the time is over you get 0 points, " +
-                    "if you guess it right you will earn 2 points for each second left on the timer. " +
-                    "Good luck and have fun!");
+            //Easy: 100 seconds, 3 points for each second left. Number selection between 0-50.
+            // 3 seconds wait time between each guess
 
-            builder.setPositiveButton("OK", (dialogInterface, i) -> {
-                name_1 = p1.getText().toString();
-                name_2 = p2.getText().toString();
+            //Medium: 80 seconds, 6 points for each second left. Number selection between 0-100.
+            //3 seconds wait time between each guess
 
-                String key = ref.push().getKey();
-                ref.child(key).child("username").setValue(name_1);
-                refLb.child(name_1).setValue(0);
+            //Hard: 60 seconds, 12 points for each second left. Number selection between 0-150
+            //3 seconds wait time between each guess.
 
-                String key1 = ref.push().getKey();
-                ref.child(key1).child("username").setValue(name_2);
-                refLb.child(name_2).setValue(0);
 
-                refSettings.child("difficulty").setValue(user_difficulty);
-                refSettings.child("selection").setValue(user_choise);
+            switch (difficulty_index){
+                case 0:
+                    builder.setTitle("RULES");
+                    builder.setMessage("Rules are simple, the user that goes first inputs the number that that needs" +
+                            "to be guessed by the second user. You have selected Easy mode, so here are the rules for it: " +
+                            "You will have 100 seconds to guess the number correctly. For each second left you will get" +
+                            " 3 points. The range of selection is from 0 to 50. Remember there is a cooldown of 3 seconds." +
+                            " Good Luck!");
 
-                Intent gameStart = new Intent(getApplicationContext(), Game.class);
+                    builder.setPositiveButton("OK", (dialogInterface, i) -> {
+                        name_1 = p1.getText().toString();
+                        name_2 = p2.getText().toString();
 
-                gameStart.putExtra("name1", name_1);
-                gameStart.putExtra("name2", name_2);
-                gameStart.putExtra("player1ID", key);
-                gameStart.putExtra("player2ID", key1);
-                startActivity(gameStart);
-            });
-            builder.show();
+                        String key = ref.push().getKey();
+                        ref.child(key).child("username").setValue(name_1);
+                        refLb.child(name_1).setValue(0);
+
+                        String key1 = ref.push().getKey();
+                        ref.child(key1).child("username").setValue(name_2);
+                        refLb.child(name_2).setValue(0);
+
+                        refSettings.child("difficulty").setValue(user_difficulty);
+                        refSettings.child("selection").setValue(user_choise);
+
+                        Intent gameStart = new Intent(getApplicationContext(), Game.class);
+
+                        gameStart.putExtra("name1", name_1);
+                        gameStart.putExtra("name2", name_2);
+                        gameStart.putExtra("player1ID", key);
+                        gameStart.putExtra("player2ID", key1);
+                        gameStart.putExtra("difficulty", difficulty_index);
+                        gameStart.putExtra("user", user_choise);
+                        startActivity(gameStart);
+                    });
+                    builder.show();
+                    break;
+
+                case 1:
+                    builder.setTitle("RULES");
+                    builder.setMessage("Rules are simple, the user that goes first inputs the number that that needs" +
+                            "to be guessed by the second user. You have selected Normal mode, so here are the rules for it: " +
+                            "You will have 80 seconds to guess the number correctly. For each second left you will get" +
+                            " 6 points. The range of selection is from 0 to 100. Remember there is a cooldown of 3 seconds." +
+                            " Good Luck!");
+
+                    builder.setPositiveButton("OK", (dialogInterface, i) -> {
+                        name_1 = p1.getText().toString();
+                        name_2 = p2.getText().toString();
+
+                        String key = ref.push().getKey();
+                        ref.child(key).child("username").setValue(name_1);
+                        refLb.child(name_1).setValue(0);
+
+                        String key1 = ref.push().getKey();
+                        ref.child(key1).child("username").setValue(name_2);
+                        refLb.child(name_2).setValue(0);
+
+                        refSettings.child("difficulty").setValue(user_difficulty);
+                        refSettings.child("selection").setValue(user_choise);
+
+                        Intent gameStart = new Intent(getApplicationContext(), Game.class);
+
+                        gameStart.putExtra("name1", name_1);
+                        gameStart.putExtra("name2", name_2);
+                        gameStart.putExtra("player1ID", key);
+                        gameStart.putExtra("player2ID", key1);
+                        gameStart.putExtra("difficulty", difficulty_index);
+                        gameStart.putExtra("user", user_choise);
+                        startActivity(gameStart);
+                    });
+                    builder.show();
+                    break;
+
+                case 2:
+                    builder.setTitle("RULES");
+                    builder.setMessage("Rules are simple, the user that goes first inputs the number that that needs" +
+                            "to be guessed by the second user. You have selected Hard mode, so here are the rules for it: " +
+                            "You will have 60 seconds to guess the number correctly. For each second left you will get" +
+                            " 12 points. The range of selection is from 0 to 150. Remember there is a cooldown of 3 seconds." +
+                            " Good Luck!");
+
+                    builder.setPositiveButton("OK", (dialogInterface, i) -> {
+                        name_1 = p1.getText().toString();
+                        name_2 = p2.getText().toString();
+
+                        String key = ref.push().getKey();
+                        ref.child(key).child("username").setValue(name_1);
+                        refLb.child(name_1).setValue(0);
+
+                        String key1 = ref.push().getKey();
+                        ref.child(key1).child("username").setValue(name_2);
+                        refLb.child(name_2).setValue(0);
+
+                        refSettings.child("difficulty").setValue(user_difficulty);
+                        refSettings.child("selection").setValue(user_choise);
+
+                        Intent gameStart = new Intent(getApplicationContext(), Game.class);
+
+                        gameStart.putExtra("name1", name_1);
+                        gameStart.putExtra("name2", name_2);
+                        gameStart.putExtra("player1ID", key);
+                        gameStart.putExtra("player2ID", key1);
+                        gameStart.putExtra("difficulty", difficulty_index);
+                        gameStart.putExtra("user", user_choise);
+                        startActivity(gameStart);
+                    });
+                    builder.show();
+                    break;
+
+            }
+
         });
     }
-
-//    @Override
-//    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//        user_difficulty = (String) difficulty.getItemAtPosition(i);
-//        user_choise = (String)choise.getItemAtPosition(i);
-//    }
-//
-//    @Override
-//    public void onNothingSelected(AdapterView<?> adapterView) {
-//    }
 
     class DifficultySpinner implements AdapterView.OnItemSelectedListener{
 
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            difficulty_index = i;
             user_difficulty = (String) difficulty.getItemAtPosition(i);
         }
 
@@ -124,10 +206,12 @@ public class GameSelection extends AppCompatActivity{
         }
     }
 
+
     class PlayerSpinner implements AdapterView.OnItemSelectedListener{
 
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
             user_choise = (String) choise.getItemAtPosition(i);
         }
 
