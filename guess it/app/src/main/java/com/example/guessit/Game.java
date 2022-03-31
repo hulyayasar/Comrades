@@ -50,8 +50,8 @@ public class Game extends AppCompatActivity{
 
         homeButton.setVisibility(View.INVISIBLE);
         lbButton.setVisibility(View.INVISIBLE);
-
         nextPlayer.setVisibility(View.INVISIBLE);
+        check.setVisibility(View.INVISIBLE);
 
         //getting difficulty selection from game selection class
         difficulty_selection = getIntent().getExtras().get("difficulty").toString();
@@ -65,6 +65,20 @@ public class Game extends AppCompatActivity{
 
         //getting who starts first
         turn = getIntent().getExtras().get("user").toString();
+
+        if(difficulty_selection_int == 0){
+            difficulty_show.setText("Difficulty: Easy");
+        }
+        else if(difficulty_selection_int == 1){
+            difficulty_show.setText("Difficulty: Medium");
+
+        }
+        else if(difficulty_selection_int == 2){
+            difficulty_show.setText("Difficulty: Hard");
+
+        }
+
+
 
         //setting the first choice of the players
         if (turn.equals("Player 1")){
@@ -84,7 +98,7 @@ public class Game extends AppCompatActivity{
         int normal = 100;
         int hard = 150;
 
-
+        check.setVisibility(View.VISIBLE);
         if(difficulty_selection_int == 0){
            to_be_guessed= rd.nextInt(easy);
            System.out.println("Number is: "+to_be_guessed);
@@ -140,6 +154,8 @@ public class Game extends AppCompatActivity{
             nextPlayer.setVisibility(View.VISIBLE);
             counter.setText("0");
             termination++;
+            start_game.setVisibility(View.INVISIBLE);
+            check.setVisibility(View.INVISIBLE);
             AlertDialog.Builder builder = new AlertDialog.Builder(Game.this);
             int points = Integer.parseInt(counterValue)-1;
 
@@ -197,7 +213,7 @@ public class Game extends AppCompatActivity{
 
 
     public void next_player (View view){
-
+        start_game.setVisibility(View.VISIBLE);
         counter.setText("0");
         number_to_guess.setText("Number to guess");
         nextPlayer.setVisibility(View.INVISIBLE);
@@ -212,11 +228,19 @@ public class Game extends AppCompatActivity{
             currentUser = name1;
         }
 
+        if(termination == 2){
+            homeButton.setVisibility(View.VISIBLE);
+            lbButton.setVisibility(View.VISIBLE);
+            start_game.setVisibility(View.INVISIBLE);
+            check.setVisibility(View.INVISIBLE);
+            nextPlayer.setVisibility(View.INVISIBLE);
+        }
+
 
 
     }
 
-    
+
 
     public void toHome (View view){
         Intent backHome = new Intent(getApplicationContext(), MainActivity.class);
@@ -230,9 +254,6 @@ public class Game extends AppCompatActivity{
 
 
     public void easy_mode(){
-        difficulty_show.setText("Difficulty: Easy");
-
-
             new CountDownTimer(100000, 1000) {
                 public void onTick(long millisUntilFinished) {
                     counter.setText(String.valueOf(millisUntilFinished / 1000));
@@ -241,14 +262,33 @@ public class Game extends AppCompatActivity{
                     }
                 }
                 public void onFinish() {
+                    termination++;
                     counter.setText("done!");
+                    if(termination == 2){
+                        homeButton.setVisibility(View.VISIBLE);
+                        lbButton.setVisibility(View.VISIBLE);
+                        start_game.setVisibility(View.INVISIBLE);
+                        check.setVisibility(View.INVISIBLE);
+                        nextPlayer.setVisibility(View.INVISIBLE);
+                    } else{
+                        start_game.setVisibility(View.INVISIBLE);
+                        check.setVisibility(View.INVISIBLE);
+                        nextPlayer.setVisibility(View.VISIBLE);
+                    }
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Game.this);
+                    builder.setTitle("Sorry but your time is up");
+
+                    builder.setMessage("In Easy mode " + currentUser + " you have made 0 points in total.");
+                    builder.setPositiveButton("OK", (dialogInterface, i) -> {
+                    });
+                    builder.show();
                 }
             }.start();
     }
 
 
     public void normal_mode(){
-        difficulty_show.setText("Difficulty: Medium");
 
             new CountDownTimer(80000, 1000) {
                 public void onTick(long millisUntilFinished) {
@@ -258,13 +298,33 @@ public class Game extends AppCompatActivity{
                     }
                 }
                 public void onFinish() {
+                    termination++;
                     counter.setText("done!");
+                    if(termination == 2){
+                        homeButton.setVisibility(View.VISIBLE);
+                        lbButton.setVisibility(View.VISIBLE);
+                        start_game.setVisibility(View.INVISIBLE);
+                        check.setVisibility(View.INVISIBLE);
+                        nextPlayer.setVisibility(View.INVISIBLE);
+                    } else{
+                        start_game.setVisibility(View.INVISIBLE);
+                        check.setVisibility(View.INVISIBLE);
+                        nextPlayer.setVisibility(View.VISIBLE);
+                    }
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Game.this);
+                    builder.setTitle("Sorry but your time is up");
+
+                    builder.setMessage("In Easy mode " + currentUser + " you have made 0 points in total.");
+                    builder.setPositiveButton("OK", (dialogInterface, i) -> {
+                    });
+                    builder.show();
+
                 }
             }.start();
     }
 
     public void hard_mode(){
-        difficulty_show.setText("Difficulty: Hard");
 
             new CountDownTimer(60000, 1000) {
                 public void onTick(long millisUntilFinished) {
@@ -274,7 +334,28 @@ public class Game extends AppCompatActivity{
                     }
                 }
                 public void onFinish() {
+                    termination++;
                     counter.setText("done!");
+                    if(termination == 2){
+                        homeButton.setVisibility(View.VISIBLE);
+                        lbButton.setVisibility(View.VISIBLE);
+                        start_game.setVisibility(View.INVISIBLE);
+                        check.setVisibility(View.INVISIBLE);
+                        nextPlayer.setVisibility(View.INVISIBLE);
+                    } else{
+                        start_game.setVisibility(View.INVISIBLE);
+                        check.setVisibility(View.INVISIBLE);
+                        nextPlayer.setVisibility(View.VISIBLE);
+                    }
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Game.this);
+                    builder.setTitle("Sorry but your time is up");
+
+                    builder.setMessage("In Easy mode " + currentUser + " you have made 0 points in total.");
+                    builder.setPositiveButton("OK", (dialogInterface, i) -> {
+                    });
+                    builder.show();
+
                 }
             }.start();
         }
