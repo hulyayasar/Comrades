@@ -34,8 +34,7 @@ public class GameSelection extends AppCompatActivity{
 
 
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference ref = database.getReference("usernames");
-    DatabaseReference refSettings = database.getReference("settings");
+
     DatabaseReference refLb = database.getReference("leaderboard");
 
     @Override
@@ -86,23 +85,18 @@ public class GameSelection extends AppCompatActivity{
                         name_1 = p1.getText().toString();
                         name_2 = p2.getText().toString();
 
-                        String key = ref.push().getKey();
-                        ref.child(key).child("username").setValue(name_1);
+
                         refLb.child(name_1).setValue(0);
 
-                        String key1 = ref.push().getKey();
-                        ref.child(key1).child("username").setValue(name_2);
+
                         refLb.child(name_2).setValue(0);
 
-                        refSettings.child("difficulty").setValue(user_difficulty);
-                        refSettings.child("selection").setValue(user_choise);
+
 
                         Intent gameStart = new Intent(getApplicationContext(), Game.class);
 
                         gameStart.putExtra("name1", name_1);
                         gameStart.putExtra("name2", name_2);
-                        gameStart.putExtra("player1ID", key);
-                        gameStart.putExtra("player2ID", key1);
                         gameStart.putExtra("difficulty", difficulty_index);
                         gameStart.putExtra("user", user_choise);
                         startActivity(gameStart);
@@ -126,23 +120,16 @@ public class GameSelection extends AppCompatActivity{
                         name_1 = p1.getText().toString();
                         name_2 = p2.getText().toString();
 
-                        String key = ref.push().getKey();
-                        ref.child(key).child("username").setValue(name_1);
+
                         refLb.child(name_1).setValue(0);
 
-                        String key1 = ref.push().getKey();
-                        ref.child(key1).child("username").setValue(name_2);
                         refLb.child(name_2).setValue(0);
 
-                        refSettings.child("difficulty").setValue(user_difficulty);
-                        refSettings.child("selection").setValue(user_choise);
 
                         Intent gameStart = new Intent(getApplicationContext(), Game.class);
 
                         gameStart.putExtra("name1", name_1);
                         gameStart.putExtra("name2", name_2);
-                        gameStart.putExtra("player1ID", key);
-                        gameStart.putExtra("player2ID", key1);
                         gameStart.putExtra("difficulty", difficulty_index);
                         gameStart.putExtra("user", user_choise);
                         startActivity(gameStart);
@@ -166,23 +153,17 @@ public class GameSelection extends AppCompatActivity{
                         name_1 = p1.getText().toString();
                         name_2 = p2.getText().toString();
 
-                        String key = ref.push().getKey();
-                        ref.child(key).child("username").setValue(name_1);
+
                         refLb.child(name_1).setValue(0);
 
-                        String key1 = ref.push().getKey();
-                        ref.child(key1).child("username").setValue(name_2);
+
                         refLb.child(name_2).setValue(0);
 
-                        refSettings.child("difficulty").setValue(user_difficulty);
-                        refSettings.child("selection").setValue(user_choise);
 
                         Intent gameStart = new Intent(getApplicationContext(), Game.class);
 
                         gameStart.putExtra("name1", name_1);
                         gameStart.putExtra("name2", name_2);
-                        gameStart.putExtra("player1ID", key);
-                        gameStart.putExtra("player2ID", key1);
                         gameStart.putExtra("difficulty", difficulty_index);
                         gameStart.putExtra("user", user_choise);
                         startActivity(gameStart);

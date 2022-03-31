@@ -61,9 +61,7 @@ public class Game extends AppCompatActivity{
         name1 = getIntent().getExtras().get("name1").toString();
         name2 = getIntent().getExtras().get("name2").toString();
 
-        //id's will be used to update the database with the corresponding points
-        id1 = getIntent().getExtras().get("player1ID").toString();
-        id2 = getIntent().getExtras().get("player2ID").toString();
+
 
         //getting who starts first
         turn = getIntent().getExtras().get("user").toString();
@@ -136,7 +134,6 @@ public class Game extends AppCompatActivity{
 
         if (to_be_guessed == Integer.parseInt(user_guess)){
             counterValue = counter.getText().toString();
-            System.out.println("Counter is: "+ counterValue);
             won = true;
             number_to_guess.setText("Correct");
             start_game.setVisibility(View.VISIBLE);
@@ -219,8 +216,7 @@ public class Game extends AppCompatActivity{
 
     }
 
-
-
+    
 
     public void toHome (View view){
         Intent backHome = new Intent(getApplicationContext(), MainActivity.class);
