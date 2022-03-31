@@ -6,6 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".Game">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonLB2"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="70dp"
+        android:layout_height="71dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="56dp"
+        android:background="@android:drawable/btn_star_big_on"
+        android:color="@color/colorPrimary"
+        android:onClick="toLB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/toHome" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/toHome"
+        android:layout_width="63dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/ic_baseline_home_24"
+        android:onClick="toHome"
+        android:textColor="#000000"
+        android:textColorLink="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <View
         android:id="@+id/tabBack_LB"
         android:layout_width="wrap_content"
@@ -79,15 +107,26 @@
         app:layout_constraintTop_toTopOf="@+id/tabLB_LB" />
 
     <TextView
+        android:id="@+id/counterText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Time Remaining: "
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/counter"
+        app:layout_constraintHorizontal_bias="0.996"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabBack_LB" />
+
+    <TextView
         android:id="@+id/counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Counter"
+        android:layout_marginEnd="28dp"
+        android:text="0"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.894"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabBack_LB" />
 
     <TextView
@@ -97,58 +136,99 @@
         android:layout_marginTop="24dp"
         android:text="Difficulty: "
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/counter"
-        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintEnd_toStartOf="@+id/counterText"
+        app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabMain_LB" />
 
     <EditText
-        android:id="@+id/number_guess"
-        android:layout_width="284dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="56dp"
+        android:id="@+id/user_guess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:ems="10"
-        android:hint="Enter the number to be guessed"
-        android:inputType="numberPassword"
+        android:hint="Enter your guess"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/difficulty_show" />
+        app:layout_constraintTop_toBottomOf="@+id/hint_view"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/hint_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="40dp"
         android:text="Hint"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/number_guess" />
-
-    <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:ems="10"
-        android:hint="Enter your guess"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hint_view" />
+        app:layout_constraintTop_toBottomOf="@+id/number_to_guess" />
 
     <Button
         android:id="@+id/check_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_marginStart="20dp"
+        android:onClick="check_guess"
         android:text="Check"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toEndOf="@+id/start_game"
+        app:layout_constraintTop_toBottomOf="@+id/user_guess"
+        app:layout_constraintVertical_bias="0.366" />
+
+    <TextView
+        android:id="@+id/user_turn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Player's Turn: "
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/difficulty_show" />
+
+    <TextView
+        android:id="@+id/number_to_guess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="Number to guess"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_turn" />
+
+    <Button
+        android:id="@+id/start_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="start_game"
+        android:text="Start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_guess"
+        app:layout_constraintVertical_bias="0.366" />
+
+    <Button
+        android:id="@+id/nextPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="next_player"
+        android:text="Next Player"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toEndOf="@+id/check_button"
+        app:layout_constraintTop_toBottomOf="@+id/user_guess"
+        app:layout_constraintVertical_bias="0.366" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

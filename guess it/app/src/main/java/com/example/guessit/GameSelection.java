@@ -68,23 +68,18 @@ public class GameSelection extends AppCompatActivity{
         start.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(GameSelection.this);
 
-            //Easy: 100 seconds, 3 points for each second left. Number selection between 0-50.
-            // 3 seconds wait time between each guess
-
-            //Medium: 80 seconds, 6 points for each second left. Number selection between 0-100.
-            //3 seconds wait time between each guess
-
-            //Hard: 60 seconds, 12 points for each second left. Number selection between 0-150
-            //3 seconds wait time between each guess.
-
 
             switch (difficulty_index){
+                //Easy: 100 seconds, 3 points for each second left. Number selection between 0-50.
+                // 3 seconds wait time between each guess
+
                 case 0:
                     builder.setTitle("RULES");
-                    builder.setMessage("Rules are simple, the user that goes first inputs the number that that needs" +
-                            "to be guessed by the second user. You have selected Easy mode, so here are the rules for it: " +
+                    builder.setMessage("Rules are simple, the player that you have chosen goes first" +
+                            " Your goal is to guess the number correctly" +
+                            " You have selected Easy mode, so here are the rules for it: " +
                             "You will have 100 seconds to guess the number correctly. For each second left you will get" +
-                            " 3 points. The range of selection is from 0 to 50. Remember there is a cooldown of 3 seconds." +
+                            " 3 points. The range of selection is from 0 to 50." +
                             " Good Luck!");
 
                     builder.setPositiveButton("OK", (dialogInterface, i) -> {
@@ -116,11 +111,15 @@ public class GameSelection extends AppCompatActivity{
                     break;
 
                 case 1:
+                    //Medium: 80 seconds, 6 points for each second left. Number selection between 0-100.
+                    //3 seconds wait time between each guess
+
                     builder.setTitle("RULES");
-                    builder.setMessage("Rules are simple, the user that goes first inputs the number that that needs" +
-                            "to be guessed by the second user. You have selected Normal mode, so here are the rules for it: " +
+                    builder.setMessage("Rules are simple, the player that you have chosen goes first" +
+                            " Your goal is to guess the number correctly" +
+                            " You have selected Normal mode, so here are the rules for it: " +
                             "You will have 80 seconds to guess the number correctly. For each second left you will get" +
-                            " 6 points. The range of selection is from 0 to 100. Remember there is a cooldown of 3 seconds." +
+                            " 6 points. The range of selection is from 0 to 100." +
                             " Good Luck!");
 
                     builder.setPositiveButton("OK", (dialogInterface, i) -> {
@@ -152,11 +151,15 @@ public class GameSelection extends AppCompatActivity{
                     break;
 
                 case 2:
+                    //Hard: 60 seconds, 12 points for each second left. Number selection between 0-150
+                    //3 seconds wait time between each guess.
+
                     builder.setTitle("RULES");
-                    builder.setMessage("Rules are simple, the user that goes first inputs the number that that needs" +
-                            "to be guessed by the second user. You have selected Hard mode, so here are the rules for it: " +
+                    builder.setMessage("Rules are simple, the player that you have chosen goes first" +
+                            " Your goal is to guess the number correctly" +
+                            " You have selected Hard mode, so here are the rules for it: " +
                             "You will have 60 seconds to guess the number correctly. For each second left you will get" +
-                            " 12 points. The range of selection is from 0 to 150. Remember there is a cooldown of 3 seconds." +
+                            " 12 points. The range of selection is from 0 to 150." +
                             " Good Luck!");
 
                     builder.setPositiveButton("OK", (dialogInterface, i) -> {
