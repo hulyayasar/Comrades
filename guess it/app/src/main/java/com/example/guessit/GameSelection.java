@@ -35,7 +35,7 @@ public class GameSelection extends AppCompatActivity{
 
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-    DatabaseReference refLb = database.getReference("leaderboard");
+    DatabaseReference refLb = database.getReference("leaderboard"); //initialize database
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,7 @@ public class GameSelection extends AppCompatActivity{
         String [] players = getResources().getStringArray(R.array.players);
 
 
+        //used spinner dropdownmenu to for the selection process
         ArrayAdapter adapter_difficulty = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, difficulties);
         adapter_difficulty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficulty.setAdapter(adapter_difficulty);
@@ -64,10 +65,13 @@ public class GameSelection extends AppCompatActivity{
         adapter_choise.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         choise.setAdapter(adapter_choise);
 
+
+        //when start button is start
         start.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(GameSelection.this);
 
 
+            //rules will change depending on which difficulty was selected by the user
             switch (difficulty_index){
                 //Easy: 100 seconds, 3 points for each second left. Number selection between 0-50.
                 // 3 seconds wait time between each guess
@@ -82,23 +86,26 @@ public class GameSelection extends AppCompatActivity{
                             " Good Luck!");
 
                     builder.setPositiveButton("OK", (dialogInterface, i) -> {
+
+                        //we get the names entered
                         name_1 = p1.getText().toString();
                         name_2 = p2.getText().toString();
 
-
+                        //we set those usernames with default points (zero)
                         refLb.child(name_1).setValue(0);
-
-
                         refLb.child(name_2).setValue(0);
-
 
 
                         Intent gameStart = new Intent(getApplicationContext(), Game.class);
 
+
+                        //we pass the necessary information to next page
                         gameStart.putExtra("name1", name_1);
                         gameStart.putExtra("name2", name_2);
                         gameStart.putExtra("difficulty", difficulty_index);
                         gameStart.putExtra("user", user_choise);
+
+                        //starts the game page
                         startActivity(gameStart);
                     });
                     builder.show();
@@ -180,6 +187,8 @@ public class GameSelection extends AppCompatActivity{
 
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+            //get information from difficulty selection menu
             difficulty_index = i;
             user_difficulty = (String) difficulty.getItemAtPosition(i);
         }
@@ -196,6 +205,7 @@ public class GameSelection extends AppCompatActivity{
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
+            // we get the information from the 2nd selection (which player goes first)
             user_choise = (String) choise.getItemAtPosition(i);
         }
 

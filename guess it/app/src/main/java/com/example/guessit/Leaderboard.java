@@ -21,11 +21,13 @@ import java.util.ArrayList;
 public class Leaderboard extends AppCompatActivity {
 
 
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference;    //initialize database object
 
     TextView n1, n2, n3, n4, n5, n6, n7, n8, p1, p2, p3, p4, p5, p6, p7, p8;
     ArrayList<String> points = new ArrayList<String>();
 
+
+    //Button that leads to main page
     public void backtoHomeButton (View view){
         Intent backHome = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(backHome);
@@ -61,14 +63,17 @@ public class Leaderboard extends AppCompatActivity {
 
 
     private void getData() {
+
+        //get the database named leaderboard
         databaseReference = FirebaseDatabase.getInstance().getReference("leaderboard");
 
+        //get the points of players from least to most -max 8
         databaseReference.orderByValue().limitToLast(8).addChildEventListener(new ChildEventListener(){
 
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-
+                //add names and values to arraylist
                 for(int a = 0; a<8; a++){
                     if(points.contains(snapshot.getValue().toString())){
                         break;
@@ -78,6 +83,8 @@ public class Leaderboard extends AppCompatActivity {
                     }
                 }
 
+                //since points were ordered from least to greatest, we start by putting them to the
+                //bottom and go up.
                 for(int a = 0; a<(points.size()/2); a++){
                     if(n8.getText().equals("TextView")){
                         n8.setText(points.get(points.size()-1));

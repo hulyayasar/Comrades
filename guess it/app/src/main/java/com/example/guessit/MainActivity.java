@@ -21,11 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Button that leads to the leaderboard page
     public void leaderboard(View view){
         Intent leaderboardIntent = new Intent(getApplicationContext(), Leaderboard.class);
         startActivity(leaderboardIntent);
     }
 
+    //Button that leads to the game page
     public void gameInitialize(View view){
         Intent gameIntent = new Intent(getApplicationContext(), GameSelection.class);
         startActivity(gameIntent);
