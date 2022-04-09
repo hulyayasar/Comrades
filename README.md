@@ -1,10 +1,10 @@
 # Comrades
 This project is made by Bayram Furkan Bayar, Hulya Yasar, Muhammed Erdem Calikoglu and Spencer Samra
 
-Guess It! will be a game that purely depends on the user trying to guess the number selected depending on the different levels of difficulty. 
-For instance, the easy mode will be in a range from 0 to 100, moderate from 0 to 500, and hard will be from 0 to 1000 (bounds are subject to change depending on how testing goes). 
-In each guess, the computer will give hints to the user depending on how close the guess was to the selected number. 
-The user will have a limited amount of attempts to guess the number, if the user cannot make a right guess until the last attempt the program will narrow the bounds down 
-and will try to help the user as much as it can. This number of attempts will change according to the level of difficulty. In each game, the program will keep counting 
-the number of guesses and the time elapsed. All relevant information will be stored in a database, on which the username, amount of guesses, and the time elapsed. 
-This database will be used to generate a leaderboard at the beginning of the program and will get refreshed at the end of the game.
+Guess It! Is a multiplayer game with 3 different difficulty modes. On each mode, different settings and different rewards are being set. The rules are simple, try to guess the number as fast as possible. Now let's take a look at difficulty modes:
+1) Easy: The range is from 0 to 50. The user has 100 seconds to make the best guess. For each second remaining the user will get 3 points.
+2) Medium: The range is from 0 to 100. The user has 80 seconds to make the best guess. For each second reamining the user will get 6 points.
+3) Hard: The range is from 0 to 150. The user has 60 seconds to make the best guess. For each second remaining the user will get 12 points.
+
+On each try, the program will give hints (i.e. too low or too high). The username and points will be stored in Firebase Realtimedatabase, and these informations will be retrieved from the database in order to generate the leaderboard. 
+Have Fun!
